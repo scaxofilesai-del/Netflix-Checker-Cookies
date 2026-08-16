@@ -42,55 +42,47 @@
 
 ---
 
-# ⚙️ Persiapan & Instalasi 
-  Sebelum menjalankan bot, pastikan komputer Anda memenuhi persyaratan berikut:
-
- Google Chrome (Versi terbaru sangat disarankan).
-
- Python 3.8 atau lebih baru Download Python.
-
- Catatan Penting: Saat menginstall Python, WAJIB mencentang kotak Add Python to PATH.
-
-# 📥 Langkah Install (Hanya Sekali)
+## 📥 Langkah Install (Hanya Sekali)
  Download atau Clone repositori ini ke folder komputer Anda.
-
+ 
  Buka folder tersebut.
 
  Klik ganda file install.bat.
 
  Biarkan proses berjalan. Script akan menginstall otomatis semua library Python yang diperlukan (seperti Selenium).
 
-# 🚀 Cara Menggunakan
+## 🚀 Cara Menggunakan
  Ikuti 3 langkah mudah di bawah ini:
 
-# 📂 Langkah 1: Siapkan Cookies
+## 📂 Langkah 1: Siapkan Cookies
  Masukkan semua file .txt hasil export cookies dari browser Anda ke dalam folder bernama cookies. (Bot akan membaca semua file yang ada di folder ini, berapa pun jumlahnya).
 
-# ▶️ Langkah 2: Jalankan Bot
+## ▶️ Langkah 2: Jalankan Bot
  Klik ganda file run.bat. Jendela Command Prompt akan terbuka dan bot akan segera bekerja secara otomatis.
 
-# ✅ Langkah 3: Lihat Hasil
+## ✅ Langkah 3: Lihat Hasil
  Saat scan selesai, buka folder active_account.
 
  Semua file .txt di dalam folder ini adalah AKUN 100% VALID yang bisa Anda gunakan untuk menonton film.
 
  File yang Expired atau kena pembayaran akan otomatis terhapus dari folder cookies.
 
-# 📂 Penjelasan Folder & Output
+## 📂 Penjelasan Folder & Output
 Folder / File	Fungsi
  📁 cookies/	Tempat Anda memasukkan file .txt yang belum dites.
  📁 active_account/	Tempat file akun VALID & BISA DIPAKAI dipindahkan secara otomatis.
  📄 netflix_accounts.txt	Database teks yang mencatat Email & Plan dari akun yang berhasil diverifikasi.
  📄 scan_history.log	Log file mencatat semua riwayat scan yang pernah dilakukan (Untuk troubleshooting).
  📄 run.bat	Launcher utama untuk memulai scanning.
-# 💡 Tips & Trik
+ 
+## 💡 Tips & Trik
  Jangan Scan 1000 File Sekaligus: Meskipun bot kuat, sebaiknya bagi file menjadi batch (contoh: 100 file sekali jalan). Ini mengurangi risiko browser crash.
 
  Hapus File Lama Secara Berkala: Jika Anda sudah memindahkan akun valid ke active_account, file di cookies yang sudah terhapus artinya sudah tidak berguna lagi.
 
  Pastikan Internet Stabil: Proses scanning sangat bergantung pada koneksi internet yang cepat.
 
-# ⚠️ Disclaimer & Lisensi
+## ⚠️ Disclaimer & Lisensi
  Peringatan: Script ini dibuat untuk tujuan edukasi dan penelitian. Menggunakan cookie akun orang lain tanpa izin bisa melanggar syarat dan ketentuan (ToS) Netflix.
 
  Penulis (adooo) tidak bertanggung jawab atas penyalahgunaan, pemblokiran akun, atau kerugian yang mungkin timbul akibat penggunaan alat ini. Gunakan dengan bijak dan bertanggung jawab.
