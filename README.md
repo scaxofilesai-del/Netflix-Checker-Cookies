@@ -39,6 +39,33 @@
 | 📊 **Progress Bar Real-Time** | Menampilkan status scanning secara langsung (100% transparan). |
 | 🖥️ **Plug & Play** | Cukup klik 2x file `.bat`, tidak perlu buka CMD manual. |
 | 🗡️ **100% Open Source** | Kode bebas dipelajari, dimodifikasi, dan disebarluaskan. |
+
+---
+
+## 📸 Demo Tampilan
+
+*(Berikut adalah contoh tampilan di Command Prompt saat bot berjalan)*
+
+```text
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃   ███╗   ██╗███████╗████████╗███████╗██╗  ██╗██╗ ██╗   ┃
+┃   ████╗  ██║██╔════╝╚══██╔══╝██╔════╝╚██╗██╔╝██║ ██║   ┃
+┃   ██╔██╗ ██║█████╗     ██║   █████╗   ╚███╔╝ ██║ ██║   ┃
+┃   ██║╚██╗██║██╔══╝     ██║   ██╔══╝   ██╔██╗ ██║ ╚═╝   ┃
+┃   ██║ ╚████║██║        ██║   ███████╗██╔╝ ██╗██║ ██╗   ┃
+┃   ╚═╝  ╚═══╝╚═╝        ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝ ╚═╝   ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+         🗡️   ULTIMATE COOKIE CHECKER v24.0   🗡️
+            by adooo · Open Source Premium
+
+╔══════════════════════════════════════════╗
+║ 📂  Total Cookies Loaded: 050 files     ║
+║ 🗡️  Mode: Premium Auto-Check            ║
+╚══════════════════════════════════════════╝
+
+⏳ Scanning [050/050]: filename.txt
+✅ [050/050] user@email.com | Plan-Premium
+---
 ⚙️ Persiapan & Instalasi
 Sebelum menjalankan bot, pastikan komputer Anda memenuhi persyaratan berikut:
 
@@ -98,27 +125,3 @@ Lisensi: Open Source (MIT License). Anda bebas menggunakan, memodifikasi, dan me
 <p align="center"> <b>🗡️ Dibuat dengan penuh semangat oleh adooo 🗡️</b><br> <sub>Jangan lupa beri ⭐ bintang di GitHub jika project ini bermanfaat!</sub> </p> ```
 Silakan copy-paste kode-kode di atas ke file masing-masing. Sekarang project Anda sudah memiliki Code Engine yang sangat canggih dan Dokumentasi README yang sangat profesional! 🚀🗡️🖤
 ---
-
-## 📸 Demo Tampilan
-
-*(Berikut adalah contoh tampilan di Command Prompt saat bot berjalan)*
-
-```text
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃   ███╗   ██╗███████╗████████╗███████╗██╗  ██╗██╗ ██╗   ┃
-┃   ████╗  ██║██╔════╝╚══██╔══╝██╔════╝╚██╗██╔╝██║ ██║   ┃
-┃   ██╔██╗ ██║█████╗     ██║   █████╗   ╚███╔╝ ██║ ██║   ┃
-┃   ██║╚██╗██║██╔══╝     ██║   ██╔══╝   ██╔██╗ ██║ ╚═╝   ┃
-┃   ██║ ╚████║██║        ██║   ███████╗██╔╝ ██╗██║ ██╗   ┃
-┃   ╚═╝  ╚═══╝╚═╝        ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝ ╚═╝   ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
-         🗡️   ULTIMATE COOKIE CHECKER v24.0   🗡️
-            by adooo · Open Source Premium
-
-╔══════════════════════════════════════════╗
-║ 📂  Total Cookies Loaded: 050 files     ║
-║ 🗡️  Mode: Premium Auto-Check            ║
-╚══════════════════════════════════════════╝
-
-⏳ Scanning [050/050]: filename.txt
-✅ [050/050] user@email.com | Plan-Premium
