@@ -15,14 +15,12 @@ from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
 
 # ===================================================================
-# KONFIGURASI WARNA CLI (Premium UI)
+# KONFIGURASI WARNA CLI
 # ===================================================================
-H = '\033[92m'  # Hijau Terang
-B = '\033[94m'  # Biru
-Y = '\033[93m'  # Kuning
-R = '\033[91m'  # Merah
-W = '\033[97m'  # Putih
-N = '\033[0m'   # Reset
+BIRU = '\033[94m'    # Warna default saat scanning
+HIJAU = '\033[92m'   # Warna untuk VALID
+MERAH = '\033[91m'   # Warna untuk INVALID / ERROR
+RESET = '\033[0m'    # Reset warna
 
 # ===================================================================
 # KONFIGURASI FOLDER
@@ -33,11 +31,11 @@ ACCOUNTS_FILE = "netflix_accounts.txt"
 LOG_FILE = "scan_history.log"
 
 # ===================================================================
-# FUNGSI BANNER & LOGO
+# FUNGSI BANNER & LOGO (BIRU)
 # ===================================================================
 def print_banner():
     banner = f"""
-{Y}
+{BIRU}
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃  ███╗   ██╗███████╗████████╗███████╗██╗  ██╗██╗ ██╗   ┃
 ┃  ████╗  ██║██╔════╝╚══██╔══╝██╔════╝╚██╗██╔╝██║ ██║   ┃
@@ -48,7 +46,7 @@ def print_banner():
 ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
          🗡️   ULTIMATE COOKIE CHECKER v24.0   🗡️
             by adooo · Open Source Premium
-{N}"""
+{RESET}"""
     print(banner)
 
 # ===================================================================
@@ -94,12 +92,13 @@ def log_to_file(message):
         f.write(f"[{datetime.now().isoformat()}] {message}\n")
 
 # ===================================================================
-# CORE SCAN ENGINE (PREMIUM CHECKS)
+# CORE SCAN ENGINE (WARNA BIRU SAAT SCAN, BERUBAH SAAT SELESAI)
 # ===================================================================
 def scan_file(file_path, index, total):
     file_name = os.path.basename(file_path)
-    # Progress bar yang dinamis (tanpa membuat baris baru)
-    print(f"\r{B}⏳ Scanning [{index:03}/{total:03}]: {W}{file_name:<40}{N}", end='', flush=True)
+    
+    # Selama scanning: SEMUA TEKS BERWARNA BIRU
+    print(f"\r{BIRU}⏳ Scanning [{index:03}/{total:03}]: {file_name:<40}{RESET}", end='', flush=True)
 
     options = Options()
     options.add_argument('--headless')
@@ -116,7 +115,8 @@ def scan_file(file_path, index, total):
         cookies = parse_cookies(file_path)
         if not cookies:
             remove_cookie_file(file_path)
-            print(f"\r{R}⛔ [{index:03}/{total:03}] {W}INVALID FORMAT: {file_name:<40}{N}")
+            # MERAH: Format file rusak (semua teks merah)
+            print(f"\r{MERAH}❌ [{index:03}/{total:03}] INVALID FORMAT: {file_name:<40}{RESET}")
             driver.quit()
             return False
 
@@ -157,7 +157,7 @@ def scan_file(file_path, index, total):
 
         # VALIDASI INTI
         if 'browse' in final_url and not is_payment_hold:
-            # >> AKUN SUPER VALID! <<
+            # >> HIJAU: AKUN VALID! (semua teks hijau) <<
             try:
                 email = driver.find_element(By.CSS_SELECTOR, '.account-email').text.strip()
                 plan = driver.find_element(By.CSS_SELECTOR, '.plan-details, .membership-plan').text.strip()
@@ -172,26 +172,30 @@ def scan_file(file_path, index, total):
             log_to_file(f"SUCCESS: {email} | {plan}")
             driver.quit()
             
-            print(f"\r{H}✅ [{index:03}/{total:03}] {W}{email:<40} {H}| {plan}{N}")
+            # HIJAU: Seluruh teks berwarna hijau
+            print(f"\r{HIJAU}✅ [{index:03}/{total:03}] {email:<40} | {plan}{RESET}")
             return True
             
         else:
-            # >> GAGAL (Terkena Payment / Error) <<
+            # >> MERAH: GAGAL (semua teks merah) <<
             remove_cookie_file(file_path)
             log_to_file(f"FAILED: {file_name} (Payment Hold/Invalid)")
             driver.quit()
             
             if is_payment_hold:
-                print(f"\r{Y}💳 [{index:03}/{total:03}] {W}PAYMENT BLOCK: {file_name:<40}{N}")
+                # MERAH: Payment Hold
+                print(f"\r{MERAH}💳 [{index:03}/{total:03}] PAYMENT BLOCK: {file_name:<40}{RESET}")
             else:
-                print(f"\r{R}⛔ [{index:03}/{total:03}] {W}INVALID LOGIN: {file_name:<40}{N}")
+                # MERAH: Invalid Login
+                print(f"\r{MERAH}❌ [{index:03}/{total:03}] INVALID LOGIN: {file_name:<40}{RESET}")
             return False
 
     except Exception as e:
         try: driver.quit()
         except: pass
         remove_cookie_file(file_path)
-        print(f"\r{R}⚠️ [{index:03}/{total:03}] {W}SYSTEM ERROR: {file_name:<40}{N}")
+        # MERAH: System Error
+        print(f"\r{MERAH}⚠️ [{index:03}/{total:03}] SYSTEM ERROR: {file_name:<40}{RESET}")
         return False
 
 # ===================================================================
@@ -204,18 +208,21 @@ def main():
     files = get_all_cookie_files()
     total = len(files)
     
-    print(f"{W}╔══════════════════════════════════════════╗{N}")
-    print(f"{W}║ 📂  Total Cookies Loaded: {H}{total:03}{W} files{N}")
-    print(f"{W}║ 🗡️  Mode: Premium Auto-Check {N}")
-    print(f"{W}╚══════════════════════════════════════════╝{N}")
+    # Seluruh header berwarna BIRU
+    print(f"{BIRU}╔══════════════════════════════════════════╗{RESET}")
+    print(f"{BIRU}║ 📂  Total Cookies Loaded: {total:03} files{RESET}")
+    print(f"{BIRU}║ 🗡️  Mode: Premium Auto-Check {RESET}")
+    print(f"{BIRU}╚══════════════════════════════════════════╝{RESET}")
     print()
     
     if total == 0:
-        print(f"{R}❌ ERROR: Folder '{COOKIE_FOLDER}' is empty!{N}")
-        print(f"{Y}💡 Tip: Place your .txt files into the 'cookies' folder and try again.{N}")
+        # MERAH: Error (semua teks merah)
+        print(f"{MERAH}❌ ERROR: Folder '{COOKIE_FOLDER}' is empty!{RESET}")
+        print(f"{BIRU}💡 Tip: Place your .txt files into the 'cookies' folder and try again.{RESET}")
+        print(f"{BIRU}💡 Folder 'cookies/' has been created automatically.{RESET}")
         return
 
-    print(f"{W}▶ Initializing scan engine...{N}")
+    print(f"{BIRU}▶ Initializing scan engine...{RESET}")
     time.sleep(1)
     
     success_count = 0
@@ -224,15 +231,18 @@ def main():
         if scan_file(file_path, i + 1, total):
             success_count += 1
 
-    print(f"\n{W}╔══════════════════════════════════════════╗{N}")
+    # Hasil akhir: berubah warna sesuai status
+    print(f"\n{BIRU}╔══════════════════════════════════════════╗{RESET}")
     if success_count > 0:
-        print(f"{W}║ {H}✅ SCAN COMPLETED! Found {success_count} Valid Accounts{N}")
-        print(f"{W}║ {H}📁 Saved to folder: '{ACTIVE_FOLDER}'{N}")
-        print(f"{W}║ {H}📝 Report saved to: '{ACCOUNTS_FILE}'{N}")
+        # HIJAU: Jika ada akun valid
+        print(f"{HIJAU}║ ✅ SCAN COMPLETED! Found {success_count} Valid Accounts{RESET}")
+        print(f"{HIJAU}║ 📁 Saved to folder: '{ACTIVE_FOLDER}'{RESET}")
+        print(f"{HIJAU}║ 📝 Report saved to: '{ACCOUNTS_FILE}'{RESET}")
     else:
-        print(f"{W}║ {R}❌ SCAN COMPLETED. No usable accounts found.{N}")
-    print(f"{W}║ 🗡️ by adooo ;P{N}")
-    print(f"{W}╚══════════════════════════════════════════╝{N}")
+        # MERAH: Jika tidak ada akun valid
+        print(f"{MERAH}║ ❌ SCAN COMPLETED. No usable accounts found.{RESET}")
+    print(f"{BIRU}║ 🗡️ by adooo ;P{RESET}")
+    print(f"{BIRU}╚══════════════════════════════════════════╝{RESET}")
 
 if __name__ == "__main__":
     main()
