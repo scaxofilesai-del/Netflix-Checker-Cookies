@@ -1,45 +1,52 @@
 @echo off
-title Netflix Checker Auto Installer - by adooo
+title Netflix Checker - Installer
 color 0A
 
-echo ====================================================
-echo   NETFLIX PREMIUM CHECKER - AUTO INSTALLER
-echo   by adooo ;P
-echo ====================================================
+echo ==================================================
+echo   INSTALLING DEPENDENCIES FOR NETFLIX CHECKER
+echo ==================================================
 echo.
 
-:: 1. Cek Python
-echo [1/3] Mengecek Python environment...
+REM Cek apakah Python terinstall
+echo [1/3] Mengecek Python...
 python --version >nul 2>&1
-if %errorlevel% neq 0 (
+if errorlevel 1 (
     echo.
-    echo [ERROR] Python tidak ditemukan!
-    echo Silakan download dan install Python dari python.org.
-    echo (Jangan lupa centang "Add Python to PATH" saat install)
+    echo ❌ ERROR: Python tidak ditemukan!
+    echo.
+    echo 📌 Solusi:
+    echo 1. Download Python di https://www.python.org/downloads/
+    echo 2. Install Python dengan mencentang "Add Python to PATH"
+    echo 3. Restart Command Prompt, lalu jalankan install.bat lagi
     echo.
     pause
     exit /b
 )
-echo [OK] Python ditemukan.
+echo ✅ Python terdeteksi.
 echo.
 
-:: 2. Install Library (Menampilkan proses download di layar)
-echo [2/3] Menginstall Selenium dan Webdriver-Manager...
-echo.
+REM Install library yang dibutuhkan
+echo [2/3] Menginstall library (selenium, webdriver-manager)...
 pip install selenium webdriver-manager
-echo.
 
-:: 3. Buat folder
-echo [3/3] Membuat struktur folder...
-if not exist cookies mkdir cookies
-if not exist active_account mkdir active_account
-echo [OK] Folder cookies dan active_account siap.
-echo.
+if errorlevel 1 (
+    echo.
+    echo ❌ Gagal menginstall library.
+    echo.
+    echo 📌 Solusi:
+    echo 1. Pastikan internet Anda terhubung.
+    echo 2. Coba jalankan Command Prompt sebagai Administrator.
+    echo 3. Lalu ketik: pip install selenium webdriver-manager
+    echo.
+    pause
+    exit /b
+)
 
-echo ====================================================
-echo   INSTALASI BERHASIL!
-echo ====================================================
 echo.
-echo Sekarang Anda bisa klik ganda file "run.bat" untuk memulai scan.
+echo ==================================================
+echo ✅ Installation Complete!
+echo ==================================================
+echo.
+echo Anda sekarang bisa menjalankan run.bat
 echo.
 pause
