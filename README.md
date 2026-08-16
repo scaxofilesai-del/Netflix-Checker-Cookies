@@ -42,7 +42,7 @@
 
 ---
 
-⚙️ Persiapan & Instalasi
+## ⚙️ Persiapan & Instalasi
 Sebelum menjalankan bot, pastikan komputer Anda memenuhi persyaratan berikut:
 
 Google Chrome (Versi terbaru sangat disarankan).
@@ -99,7 +99,7 @@ Penulis (adooo) tidak bertanggung jawab atas penyalahgunaan, pemblokiran akun, a
 Lisensi: Open Source (MIT License). Anda bebas menggunakan, memodifikasi, dan mendistribusikan ulang kode ini, dengan mencantumkan kredit kepada pembuat asli.
 
 <p align="center"> <b>🗡️ Dibuat dengan penuh semangat oleh adooo 🗡️</b><br> <sub>Jangan lupa beri ⭐ bintang di GitHub jika project ini bermanfaat!</sub> </p> ```
-Silakan copy-paste kode-kode di atas ke file masing-masing. Sekarang project Anda sudah memiliki Code Engine yang sangat canggih dan Dokumentasi README yang sangat profesional! 🚀🗡️🖤
+Silakan copy-paste kode-kode di atas ke file masing-masing. Sekarang project Anda sudah memiliki Code Engine yang sangat canggih dan Dokumentasi README yang sangat profesional! 🚀🗡️🖤 ##
 
 ---
 
